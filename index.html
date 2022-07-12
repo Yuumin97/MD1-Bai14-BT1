@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hinh ve </title>
+</head>
+<body>
+<table border="2px"style="width: 1000px; height: 900px">
+    <tr style="height: 50px">
+        <td>Nhập Vào Độ Rộng:</td>
+        <td><input id="width" type="text"></td>
+    </tr>
+    <tr style="height: 50px">
+        <td>Nhập Vào Chiều Cao:</td>
+        <td><input id="height" type="text"></td>
+    </tr>
+    <tr style="height: 150px">
+        <td> Area of Rectangle</td>
+        <td><h3 id="kqcv"></h3></td>
+    </tr>
+    <tr style="height: 150px">
+        <td>Perimeter of Rectangle</td>
+        <td><h3 id="kqs"></h3></td>
+    </tr>
+    <tr style="height: 50px">
+        <td><button onclick="show()">Show Result</button></td>
+        <td><button onclick="clearCanvas()">Reset</button></td>
+    </tr>
+    <tr >
+        <td colspan="2"><canvas id="myCanvas" width="800px"height="300px" style="border: 2px solid blue"></canvas></td>
+    </tr>
+</table>
+<script>
+    class Rectangle{
+        width;
+        height;
+        constructor(width,height) {
+            this.width = width;
+            this.height = height;
+        }
+        getWidth(){
+            return this.width;
+        }
+        setWidth(){
+            this.width = width;
+        }
+        getHeight(){
+            return this.height;
+        }
+        setHeight(){
+            this.height = height;
+        }
+        getAreaofRectangle(){
+            return (this.width * this.height);
+        }
+        getPerimeterofRectangle(){
+            return(this.width + this.height)* 2;
+        }
+
+    }
+    function show() {
+        let widtH = +document.getElementById('width').value;
+        let heighT =+document.getElementById('height').value;
+        let chunhat = new Rectangle(widtH,heighT)
+        let area = chunhat.getAreaofRectangle()
+        document.getElementById('kqcv').innerHTML =area
+        let perimeter = chunhat.getPerimeterofRectangle()
+        document.getElementById('kqs').innerHTML = perimeter
+        let Canvas = document.getElementById('myCanvas')
+        let ctx = Canvas.getContext('2d')
+        ctx.fillRect(20,20,widtH,heighT)
+    }
+    function clearCanvas() {
+        console.log('text')
+        document.getElementById('width').innerHTML = '';
+        document.getElementById('height').innerHTML = '';
+        document.getElementById('kqs').innerHTML = '';
+        document.getElementById('kqcv').innerHTML = '';
+        let Canvas = document.getElementById('myCanvas');
+        let ctx = Canvas.getContext('2d')
+        ctx.clearRect(0,0,Canvas.width,Canvas.height);
+
+    }
+
+</script>
+</body>
+</html>
